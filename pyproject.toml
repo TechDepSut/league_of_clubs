@@ -10,6 +10,7 @@ packages = [{include = "league_of_clubs"}]
 python = "^3.8"
 django = "^4.2.1"
 djangorestframework = "^3.14.0"
+pillow = "^9.5.0"
 
 
 [build-system]
