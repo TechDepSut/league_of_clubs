@@ -9,7 +9,7 @@ class ClubSerializer(serializers.ModelSerializer):
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
-        fields = '__all__'
+        fields = ['uid', 'group_number', 'faculty', 'first_name', 'last_name', 'patronymic', 'student_credit', 'course', 'training_form', 'age', 'email']
 
 class WinnerSerializer(serializers.ModelSerializer):
     class Meta:
