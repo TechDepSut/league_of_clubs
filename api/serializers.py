@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Club, Student, Winner
+from .models import Club, Student, Winner, Selection
 
 class ClubSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,4 +14,10 @@ class StudentSerializer(serializers.ModelSerializer):
 class WinnerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Winner
+        fields = '__all__'
+
+
+class SelectionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Selection
         fields = '__all__'

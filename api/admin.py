@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Club, Winner, Student
+from .models import Club, Winner, Student, Selection
 
 admin.site.site_header = "League of clubs"
 admin.site.site_title = "League of clubs"
@@ -9,3 +9,4 @@ admin.site.site_title = "League of clubs"
 admin.site.register(Club)
 admin.site.register(Winner)
 admin.site.register(Student)
+admin.site.register(Selection)

@@ -40,3 +40,9 @@ class Student(models.Model):
     age = models.IntegerField()
     email = models.EmailField()
     choise = models.BooleanField(default=False)
+
+
+class Selection(models.Model):
+    id = models.AutoField(primary_key=True)
+    club_id = models.ForeignKey(Club, on_delete=models.CASCADE)
+    votes = models.IntegerField()

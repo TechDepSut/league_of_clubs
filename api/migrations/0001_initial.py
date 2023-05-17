@@ -82,4 +82,12 @@ class Migration(migrations.Migration):
                 ),
             ],
         ),
+        migrations.CreateModel(
+            name="Selection",
+            fields=[
+                ("id", models.AutoField(primary_key=True, serialize=False)),
+                ("club_id", models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to="api.Club")),
+                ("votes", models.IntegerField()),
+            ],
+        ),
     ]
