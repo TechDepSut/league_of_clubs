@@ -18,7 +18,7 @@ class Club(models.Model):
 class Winner(models.Model):
     id = models.AutoField(primary_key=True)
     club = models.ForeignKey(Club, on_delete=models.CASCADE)
-    season = models.IntegerField()
+    season = models.PositiveIntegerField()
 
 
 class Student(models.Model):
@@ -34,10 +34,10 @@ class Student(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     patronymic = models.CharField(max_length=30)
-    student_credit = models.IntegerField() # номер зачетки
+    student_credit = models.PositiveIntegerField() # номер зачетки
     course = models.IntegerField()
     training_form = models.CharField(max_length=25, choices=TrainingForm.choices, default=TrainingForm.FULL_TIME)
-    age = models.IntegerField()
+    age = models.PositiveIntegerField()
     email = models.EmailField()
     choise = models.BooleanField(default=False)
 
@@ -45,4 +45,4 @@ class Student(models.Model):
 class Selection(models.Model):
     id = models.AutoField(primary_key=True)
     club_id = models.ForeignKey(Club, on_delete=models.CASCADE)
-    votes = models.IntegerField()
+    votes = models.PositiveIntegerField()
