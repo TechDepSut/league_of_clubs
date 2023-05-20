@@ -1,6 +1,8 @@
-from django.urls import path, include
-from rest_framework import routers
+from rest_framework import routers, permissions
 from api import views
+from django.urls import path, include, re_path
+from drf_yasg.views import get_schema_view  # new
+from drf_yasg import openapi  # new
 
 router = routers.DefaultRouter()
 router.register(r'clubs', views.ClubViewSet)
