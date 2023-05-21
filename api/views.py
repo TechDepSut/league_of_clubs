@@ -37,6 +37,7 @@ class VoteViewSet(viewsets.ViewSet):
 
     @renderer_classes(JSONRenderer)
     @csrf_exempt
+
     def post(self, request):
         uid = self.request.POST.get('uid')
         club_id = self.request.POST.get('club_id')

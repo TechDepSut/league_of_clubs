@@ -13,7 +13,6 @@ router.register(r'vote', views.VoteViewSet)
 vote_list = views.VoteViewSet.as_view({'post': 'post', 'get': 'get'})
 
 
-
 urlpatterns = [
     path('', include(router.urls)),
     path('vote/', vote_list, name='vote'),
