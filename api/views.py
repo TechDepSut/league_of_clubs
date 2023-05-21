@@ -76,7 +76,6 @@ class VoteViewSet(viewsets.ViewSet):
             return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
-
     # def update(self, request, pk=None):
     #     print(request.data)
     #     print(pk)
