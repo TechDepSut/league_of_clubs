@@ -3,16 +3,18 @@ from django.contrib.auth.models import User
 
 
 class Club(models.Model):
-
     class Statuses(models.TextChoices):
-        ON_ELECTION = 'on_election', 'On election'
-        INACTIVE = 'inactive', 'Inactive'
-        WINNER = 'winner', 'Winner'
+        ON_ELECTION = "on_election", "On election"
+        INACTIVE = "inactive", "Inactive"
+        WINNER = "winner", "Winner"
+
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     description = models.TextField()
-    logo = models.ImageField(upload_to='clubs', blank=True, null=True)
-    status = models.CharField(max_length=20, choices=Statuses.choices, default=Statuses.INACTIVE)
+    logo = models.ImageField(upload_to="clubs", blank=True, null=True)
+    status = models.CharField(
+        max_length=20, choices=Statuses.choices, default=Statuses.INACTIVE
+    )
 
 
 class Winner(models.Model):
@@ -22,11 +24,10 @@ class Winner(models.Model):
 
 
 class Student(models.Model):
-
     class TrainingForm(models.TextChoices):
-        FULL_TIME = 'full_time', 'Очная'
-        DISTANCE = 'distance', 'Заочная'
-        FULL_TIME_AND_DISTANCE = 'full_time_and_distance', 'Очно-заочная'
+        FULL_TIME = "full_time", "Очная"
+        DISTANCE = "distance", "Заочная"
+        FULL_TIME_AND_DISTANCE = "full_time_and_distance", "Очно-заочная"
 
     uid = models.IntegerField()
     group_number = models.CharField(max_length=10)
@@ -34,9 +35,11 @@ class Student(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     patronymic = models.CharField(max_length=30)
-    student_credit = models.PositiveIntegerField() # номер зачетки
+    student_credit = models.PositiveIntegerField()  # номер зачетки
     course = models.IntegerField()
-    training_form = models.CharField(max_length=25, choices=TrainingForm.choices, default=TrainingForm.FULL_TIME)
+    training_form = models.CharField(
+        max_length=25, choices=TrainingForm.choices, default=TrainingForm.FULL_TIME
+    )
     age = models.PositiveIntegerField()
     email = models.EmailField()
     choise = models.BooleanField(default=False)

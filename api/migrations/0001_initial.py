@@ -5,7 +5,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = []
@@ -86,7 +85,12 @@ class Migration(migrations.Migration):
             name="Selection",
             fields=[
                 ("id", models.AutoField(primary_key=True, serialize=False)),
-                ("club_id", models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to="api.Club")),
+                (
+                    "club_id",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="api.Club"
+                    ),
+                ),
                 ("votes", models.IntegerField()),
             ],
         ),

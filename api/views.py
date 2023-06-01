@@ -1,11 +1,21 @@
 from rest_framework import viewsets, status
 from rest_framework.renderers import JSONRenderer, TemplateHTMLRenderer
 from rest_framework.decorators import api_view, renderer_classes
-from api.serializers import ClubSerializer, StudentSerializer, WinnerSerializer, SelectionSerializer
+from api.serializers import (
+    ClubSerializer,
+    StudentSerializer,
+    WinnerSerializer,
+    SelectionSerializer,
+)
 from api.models import Club, Student, Winner, Selection
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
-from django.http import HttpResponseNotFound, HttpResponse, HttpResponseNotAllowed, HttpRequest
+from django.http import (
+    HttpResponseNotFound,
+    HttpResponse,
+    HttpResponseNotAllowed,
+    HttpRequest,
+)
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -37,13 +47,12 @@ class VoteViewSet(viewsets.ViewSet):
 
     @renderer_classes(JSONRenderer)
     @csrf_exempt
-
     def post(self, request):
-        uid = self.request.POST.get('uid')
-        club_id = self.request.POST.get('club_id')
+        uid = self.request.POST.get("uid")
+        club_id = self.request.POST.get("club_id")
 
         # Получение объекта модели "Club" с помощью значения переменной "club_id".
-        club = get_object_or_404(Club, id=club_id, status='on_election')
+        club = get_object_or_404(Club, id=club_id, status="on_election")
 
         # Получение объекта модели "Selection" с помощью значения переменной "club_id".
         selection = get_object_or_404(Selection, club=club)
@@ -60,7 +69,7 @@ class VoteViewSet(viewsets.ViewSet):
         student.save()
 
         # Возвращает сообщение об успешном учёте голоса со статусом 201.
-        return Response('Vote counted', status=status.HTTP_201_CREATED)
+        return Response("Vote counted", status=status.HTTP_201_CREATED)
 
     def get(self, request):
         queryset = Club.objects.all()
@@ -68,13 +77,12 @@ class VoteViewSet(viewsets.ViewSet):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def dispatch(self, request, *args, **kwargs):
-        if request.method == 'POST':
+        if request.method == "POST":
             return self.post(request, *args, **kwargs)
-        elif request.method == 'GET':
+        elif request.method == "GET":
             return self.get(request)
         else:
             return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
-
 
     # def update(self, request, pk=None):
     #     print(request.data)
@@ -96,7 +104,7 @@ class VoteViewSet(viewsets.ViewSet):
     #     student.save()
     #
     #     return Response({'success': 'Vote has been created.'}, status=status.HTTP_201_CREATED)
-    
+
     # def list(self, request):
     #     # print(request.data)
     #     queryset = Club.objects.all()
