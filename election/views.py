@@ -20,7 +20,10 @@ class StudentViewSet(viewsets.ModelViewSet):
         student = self.get_object()
 
         if student.choice2:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                data={"info": "You have already voted"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
         club_id = request.data.get("club_id")
         club = get_object_or_404(Club, pk=club_id)

@@ -14,7 +14,7 @@ class Club(models.Model):
 class Student(models.Model):
     uid = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
-    choice = models.ForeignKey(Club, on_delete=models.CASCADE)
+    choice = models.ForeignKey(Club, on_delete=models.CASCADE, null=True, blank=True)
     choice2 = models.BooleanField(default=False)
 
     def __str__(self):

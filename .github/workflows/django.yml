@@ -1,10 +1,10 @@
-name: Django CI
+name: Django Rest Framework CI
 
 on:
   push:
-    branches: [ "test" ]
+    branches: [ "dima" ]
   pull_request:
-    branches: [ "test" ]
+    branches: [ "dima" ]
 
 jobs:
   build:
@@ -25,3 +25,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    
+    - name: Run tests
+      run: |
+        python manage.py test
