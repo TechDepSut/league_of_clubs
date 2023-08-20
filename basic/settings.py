@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 ]
 
-INSTALLED_APPS += ["rest_framework", "api", "election"]
+INSTALLED_APPS += ["rest_framework", "api", "election", 'rest_framework_swagger']
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

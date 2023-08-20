@@ -2,8 +2,8 @@ from rest_framework import mixins, status, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
-from .models import Club, Student
-from .serializers import ClubSerializer, StudentSerializer
+from .models import Club, Student, Winner
+from .serializers import ClubSerializer, StudentSerializer, WinnerSerializer
 
 
 class ClubViewSet(viewsets.ModelViewSet):
@@ -34,3 +34,8 @@ class StudentViewSet(viewsets.ModelViewSet):
         student.choice2 = True
         student.save()
         return Response(club_serializer.data, status=status.HTTP_200_OK)
+
+
+class WinnerViewSet(viewsets.ModelViewSet):
+    queryset = Winner.objects.all()
+    serializer_class = WinnerSerializer
